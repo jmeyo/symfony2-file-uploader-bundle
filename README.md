@@ -28,11 +28,19 @@ Requirements
 Installation
 ============
 
-1) Add the following line to your Symfony2 deps file:
+1) Depending on your Symfony Version
+ Symfony 2.0 :
+ Add the following line to your Symfony2 deps file:
     
     [FileUploaderBundle]
         git=http://github.com/punkave/symfony2-file-uploader-bundle.git
         target=/bundles/PunkAve/FileUploaderBundle
+ 
+ Symfony 2.1x :
+ Add the following line to your Symfony2 composer.json file:
+ 
+    "punkave/symfony2-file-uploader-bundle": "dev-master"
+
 
 2) Modify your AppKernel with the following line:
 
@@ -63,7 +71,7 @@ Let's assume you have an editAction() method in a controller. You have a form in
 
 The FileUploader service needs a unique folder name for the files attached to a given object. To accomplish this for new objects as well as existing objects, we suggest you follow the "editId pattern," in which a form is assigned a unique, random "editId" for its entire lifetime, including multiple passes of validation if necessary. This allows us to manage file uploads for new objects that don't have their own id yet.
 
-This code takes creat of creating an editId on the first pass through the form and syncs existing files attached to an existing object, if any. The from_folder and to_folder objects specify subdirectories where the attached files will be stored. Later we'll look at how the parent directories of these folders are determined.
+This code takes care of creating an editId on the first pass through the form and syncs existing files attached to an existing object, if any. The from_folder and to_folder objects specify subdirectories where the attached files will be stored. Later we'll look at how the parent directories of these folders are determined.
 
 (Fetching $posting and validating that the user is allowed to edit that posting is up to you.)
 
